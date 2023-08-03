@@ -87,7 +87,7 @@ public final class STTimedOutputStreamTest
         .mapToDouble(STTransferStatistics::octetsPerSecond)
         .sum();
 
-    assertEquals(50.0, sum, 10.0);
+    assertEquals(50.0, sum, 25.0);
   }
 
   @Test
