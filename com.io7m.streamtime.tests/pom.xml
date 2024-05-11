@@ -9,7 +9,7 @@
   <parent>
     <artifactId>com.io7m.streamtime</artifactId>
     <groupId>com.io7m.streamtime</groupId>
-    <version>0.0.1</version>
+    <version>1.0.0</version>
   </parent>
   <artifactId>com.io7m.streamtime.tests</artifactId>
 
@@ -19,8 +19,10 @@
   <url>https://www.io7m.com/software/streamtime</url>
 
   <properties>
+    <bnd.baseline.skip>true</bnd.baseline.skip>
     <checkstyle.skip>true</checkstyle.skip>
     <mdep.analyze.skip>true</mdep.analyze.skip>
+    <spotbugs.skip>true</spotbugs.skip>
   </properties>
 
   <dependencies>
