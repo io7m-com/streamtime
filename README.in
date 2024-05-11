@@ -1,0 +1,35 @@
+
+## streamtime
+
+The `streamtime` package provides a simple extension to Java I/O streams that
+can track transfer rates and provide statistics.
+
+## Features
+
+* Input and output stream implementations that track and regularly broadcast
+  transfer statistics.
+* High coverage test suite.
+* [OSGi-ready](https://www.osgi.org/).
+* [JPMS-ready](https://en.wikipedia.org/wiki/Java_Platform_Module_System).
+* ISC license.
+
+## Usage
+
+Create a `STTimedInputStream` from an existing `InputStream`, and provide it
+with a `Consumer<STTransferStatistics>` function that receives transfer updates:
+
+```
+InputStream is;
+Consumer<STTransferStatistics> f;
+
+try (var input = new STTimedInputStream(f, is)) {
+  input.transferTo(...);
+}
+```
+
+The `f` function will be called at a rate of roughly once per second, with
+a new value of type `STTransferStatistics` describing the expected number of
+octets, the current number of octets, and the current number of octets received
+per second.
+
+The `STTimedOutputStream` class works similarly, but for `OutputStream` values.

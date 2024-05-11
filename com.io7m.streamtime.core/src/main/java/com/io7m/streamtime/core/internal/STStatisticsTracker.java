@@ -56,7 +56,11 @@ public final class STStatisticsTracker implements AutoCloseable
     this.consumer =
       Objects.requireNonNull(inConsumer, "consumer");
     this.executor =
-      Executors.newSingleThreadScheduledExecutor();
+      Executors.newSingleThreadScheduledExecutor(
+        Thread.ofVirtual()
+          .name("com.io7m.streamtime.io-", 0L)
+          .factory()
+      );
 
     this.executor.scheduleAtFixedRate(
       this::broadcast,
